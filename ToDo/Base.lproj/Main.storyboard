@@ -14,22 +14,8 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbG-Tk-e6K">
-                                <rect key="frame" x="134" y="408.66666666666669" width="125" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Go To Details"/>
-                                <connections>
-                                    <action selector="goToDetailButtonAct:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bcc-7O-O3l"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.98722581655582498" green="1" blue="0.95652248739896206" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <constraints>
-                            <constraint firstItem="tbG-Tk-e6K" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Amz-78-p6L"/>
-                            <constraint firstItem="tbG-Tk-e6K" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="GYS-Kg-RaY"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Tasks" id="JqT-jI-TND">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="mNH-Wm-iPz">
