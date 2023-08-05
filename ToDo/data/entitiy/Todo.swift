@@ -13,7 +13,7 @@ class Todo {
     var title:String?
     var description:String?
     
-    init(id: Int? = nil, title: String? = nil, description: String? = nil) {
+    init(id: Int, title: String, description: String) {
         self.id = id
         self.title = title
         self.description = description

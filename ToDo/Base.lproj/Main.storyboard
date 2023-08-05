@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,8 +15,68 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rJf-c3-MEj">
+                                <rect key="frame" x="0.0" y="159" width="393" height="610"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="todoCell" id="CWC-eT-Pee" customClass="ToDoTableViewCell" customModule="ToDo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CWC-eT-Pee" id="4uQ-oQ-xjt">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="UG6-hW-ngU">
+                                                    <rect key="frame" x="36" y="15.666666666666664" width="56.666666666666657" height="68.666666666666686"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qVz-gR-4Lw">
+                                                            <rect key="frame" x="0.0" y="0.0" width="56.666666666666664" height="28.666666666666668"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMi-hh-EiO">
+                                                            <rect key="frame" x="0.0" y="44.666666666666671" width="56.666666666666664" height="24"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="UG6-hW-ngU" firstAttribute="leading" secondItem="4uQ-oQ-xjt" secondAttribute="leadingMargin" constant="16" id="OFo-7M-H0Y"/>
+                                                <constraint firstItem="UG6-hW-ngU" firstAttribute="centerY" secondItem="4uQ-oQ-xjt" secondAttribute="centerY" id="aYG-iA-3Da"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="todoDescLabel" destination="cMi-hh-EiO" id="5TN-1J-4hE"/>
+                                            <outlet property="todoTitleLabel" destination="qVz-gR-4Lw" id="hcJ-zy-66G"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="u4t-kp-dff">
+                                <rect key="frame" x="0.0" y="103" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="HAP-RB-1mD"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.98722581655582498" green="1" blue="0.95652248739896206" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="rJf-c3-MEj" firstAttribute="top" secondItem="u4t-kp-dff" secondAttribute="bottom" id="9SC-Ao-ZKs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rJf-c3-MEj" secondAttribute="trailing" id="B6W-cs-BFB"/>
+                            <constraint firstItem="rJf-c3-MEj" firstAttribute="top" secondItem="u4t-kp-dff" secondAttribute="bottom" id="DSo-6h-DfG"/>
+                            <constraint firstItem="u4t-kp-dff" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gZS-bp-pvP"/>
+                            <constraint firstItem="u4t-kp-dff" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ojN-RW-fDO"/>
+                            <constraint firstItem="u4t-kp-dff" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="vmk-qE-AO4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rJf-c3-MEj" secondAttribute="bottom" id="xDN-Py-mn5"/>
+                            <constraint firstItem="rJf-c3-MEj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ygb-sR-FzI"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Tasks" id="JqT-jI-TND">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="mNH-Wm-iPz">
@@ -26,6 +87,8 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="searchBar" destination="u4t-kp-dff" id="msA-gb-mWQ"/>
+                        <outlet property="todoTableView" destination="rJf-c3-MEj" id="yi0-V2-F9b"/>
                         <segue destination="5pQ-zB-lRZ" kind="show" identifier="toDetail" id="sPb-ct-yie"/>
                     </connections>
                 </viewController>
@@ -186,4 +249,9 @@
             <point key="canvasLocation" x="52.671755725190835" y="-2.1126760563380285"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
