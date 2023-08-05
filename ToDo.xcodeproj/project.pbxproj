@@ -16,6 +16,7 @@
 		F216129C2A7907BB00174F27 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216129B2A7907BB00174F27 /* DetailViewController.swift */; };
 		F216129F2A7907F800174F27 /* SaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216129E2A7907F800174F27 /* SaveViewController.swift */; };
 		F21C38532A7996AB002FF69E /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21C38522A7996AB002FF69E /* Todo.swift */; };
+		F2AC17132A7E87610090EAA1 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AC17122A7E87610090EAA1 /* ToDoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		F216129B2A7907BB00174F27 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		F216129E2A7907F800174F27 /* SaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveViewController.swift; sourceTree = "<group>"; };
 		F21C38522A7996AB002FF69E /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		F2AC17122A7E87610090EAA1 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		F21612952A79074200174F27 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				F2AC17112A7E87370090EAA1 /* tableview */,
 				F21612962A79074800174F27 /* views */,
 			);
 			path = ui;
@@ -106,6 +109,14 @@
 				F21C38522A7996AB002FF69E /* Todo.swift */,
 			);
 			path = entitiy;
+			sourceTree = "<group>";
+		};
+		F2AC17112A7E87370090EAA1 /* tableview */ = {
+			isa = PBXGroup;
+			children = (
+				F2AC17122A7E87610090EAA1 /* ToDoTableViewCell.swift */,
+			);
+			path = tableview;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +190,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2AC17132A7E87610090EAA1 /* ToDoTableViewCell.swift in Sources */,
 				F216129F2A7907F800174F27 /* SaveViewController.swift in Sources */,
 				F21612822A7906EA00174F27 /* AppDelegate.swift in Sources */,
 				F216129C2A7907BB00174F27 /* DetailViewController.swift in Sources */,
