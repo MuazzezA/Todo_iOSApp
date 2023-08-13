@@ -14,6 +14,8 @@ class HomeViewController: UIViewController {
     var mainTodoList:[Todo]?
     var todoList: [Todo]?
     
+    var viewModel = TodoDaoRepo()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,16 +23,19 @@ class HomeViewController: UIViewController {
         todoTableView.dataSource = self
         todoTableView.delegate = self
         
-        todoList = [
-        Todo(id: 0, title: "iOS Bootcamp", description: "Homework"),
-        Todo(id: 1, title: "Work", description: "Task"),
-        Todo(id: 2, title: "Home", description: "Homework"),
-        Todo(id: 3, title: "Personal", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s")
-        ]
+        
+        _ = viewModel.todoList.subscribe(onNext: { liste in
+            self.todoList = liste
+            self.todoTableView.reloadData()
+        })
+        
         
         mainTodoList = todoList
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.loadTodoData()
+    }
 
     @IBAction func goToDetailButtonAct(_ sender: Any) {
         if let count = todoList?.count, count > 0 {
@@ -65,7 +70,8 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("Search : \(searchText)")
+        viewModel.searchTodoInfo(searchText: searchText)
+        
         filterTodos(with: searchText)
     }
 }
@@ -113,7 +119,8 @@ extension HomeViewController:UITableViewDelegate, UITableViewDataSource {
             let cancelAction = UIAlertAction(title: "İptal", style: .cancel)
             let yesAction = UIAlertAction(title: "Evet", style: .destructive) {
                 action in
-                print("\(item.title!) notu silindi.")
+                //print("\(item.title!) notu silindi.")
+                self.viewModel.deleteTodoInfo(id: item.id!)
                 
                 self.todoList?.remove(at: item.id!)
                 self.todoTableView.reloadData()
