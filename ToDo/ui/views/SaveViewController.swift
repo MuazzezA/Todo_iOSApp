@@ -12,11 +12,11 @@ class SaveViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descTextField: UITextField!
     
+    var viewModel = TodoDaoRepo()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-            
-        
-       
     }
     
     @IBAction func saveButtonAct(_ sender: Any) {
@@ -30,5 +30,8 @@ class SaveViewController: UIViewController {
         let alert = UIAlertController(title: "Kaydedildi", message: "title : \(titleText) - description : \(descriptionText)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Tamam", comment: "Default action"), style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+        
+        viewModel.saveTodoInfo(titleText: titleText, descriptionText: descriptionText)
+        
     }
 }
