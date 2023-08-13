@@ -10,6 +10,7 @@ import UIKit
 class DetailViewController: UIViewController {
 
     var todoItem:Todo?
+    var viewModel = TodoDaoRepo()
     
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var titleTextField: UITextField!
@@ -30,9 +31,11 @@ class DetailViewController: UIViewController {
     }
     
     func updateTodoInfo(new_titleText:String, new_descriptionText:String){
-        let alert = UIAlertController(title: "Güncellendi", message: "title : \(new_titleText) - description : \(new_descriptionText)", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Tamam", comment: "Default action"), style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        viewModel.updateTodoInfo(new_titleText: new_titleText, new_descriptionText: new_descriptionText)
+        
+//        let alert = UIAlertController(title: "Güncellendi", message: "title : \(new_titleText) - description : \(new_descriptionText)", preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: NSLocalizedString("Tamam", comment: "Default action"), style: .default, handler: nil))
+//        self.present(alert, animated: true, completion: nil)
     }
     
 }
