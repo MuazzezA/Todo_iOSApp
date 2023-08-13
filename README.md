@@ -2,7 +2,7 @@
 
 <h3>iOS todo app homework</h3>
 
-<h4>3. ödev</h4>
+<h4>Todo için verilen : 3. ödev</h4>
 
 * MVVM yapısı projeye uygulandı, printlerde 'repo' kelimesi ile işlevin repoda olduğu gösterildi.
 
