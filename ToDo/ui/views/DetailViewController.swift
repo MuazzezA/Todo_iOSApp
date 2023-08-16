@@ -26,12 +26,12 @@ class DetailViewController: UIViewController {
 
     @IBAction func updateButtonAct(_ sender: Any) {
         if let title = titleTextField.text, let desc = descriptionTextField.text {
-            updateTodoInfo(new_titleText: title, new_descriptionText: desc)
+            updateTodoInfo(todo_id: todoItem?.id ?? 0, new_titleText: title, new_descriptionText: desc)
         }
     }
     
-    func updateTodoInfo(new_titleText:String, new_descriptionText:String){
-        viewModel.updateTodoInfo(new_titleText: new_titleText, new_descriptionText: new_descriptionText)
+    func updateTodoInfo(todo_id: Int, new_titleText:String, new_descriptionText:String){
+        viewModel.updateTodoInfo(todo_id:todo_id, new_titleText: new_titleText, new_descriptionText: new_descriptionText)
         
 //        let alert = UIAlertController(title: "Güncellendi", message: "title : \(new_titleText) - description : \(new_descriptionText)", preferredStyle: .alert)
 //        alert.addAction(UIAlertAction(title: NSLocalizedString("Tamam", comment: "Default action"), style: .default, handler: nil))
