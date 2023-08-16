@@ -11,7 +11,7 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var todoTableView: UITableView!
-    var mainTodoList:[Todo]?
+
     var todoList: [Todo]?
     
     var viewModel = TodoDaoRepo()
@@ -29,8 +29,6 @@ class HomeViewController: UIViewController {
             self.todoTableView.reloadData()
         })
         
-        
-        mainTodoList = todoList
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,27 +50,12 @@ class HomeViewController: UIViewController {
             }
         }
     }
-    
-    
-    func filterTodos(with searchText: String) {
-            if searchText.isEmpty {
-                todoList = mainTodoList
-            } else {
-                todoList = mainTodoList?.filter { todoItem in
-                    return todoItem.title!.lowercased().contains(searchText.lowercased())
-                }
-            }
-            todoTableView.reloadData()
-        }
-
 }
 
 
 extension HomeViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.searchTodoInfo(searchText: searchText)
-        
-        filterTodos(with: searchText)
     }
 }
 
@@ -122,8 +105,8 @@ extension HomeViewController:UITableViewDelegate, UITableViewDataSource {
                 //print("\(item.title!) notu silindi.")
                 self.viewModel.deleteTodoInfo(id: item.id!)
                 
-                self.todoList?.remove(at: item.id!)
-                self.todoTableView.reloadData()
+                //self.todoList?.remove(at: item.id!)
+                //self.todoTableView.reloadData()
             }
             
             alert.addAction(cancelAction)
