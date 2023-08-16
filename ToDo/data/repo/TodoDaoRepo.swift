@@ -12,33 +12,98 @@ class TodoDaoRepo {
     
     var todoList = BehaviorSubject<[Todo]>(value: [Todo]())
     
-    func saveTodoInfo(titleText:String, descriptionText:String){
-        print("repo:TODO SAVE: \(titleText) - \(descriptionText)")
+    let db:FMDatabase?
+    
+    init(){
+        let filePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        
+        let dbUrl = URL(fileURLWithPath: filePath).appendingPathComponent("todos.sqlite")
+        
+        db = FMDatabase(path: dbUrl.path)
     }
     
-    func updateTodoInfo(new_titleText:String, new_descriptionText:String){
-       print("repo:TODO Update \(new_titleText)")
+    func saveTodoInfo(titleText:String, descriptionText:String){
+        db?.open()
+        do{
+            try db!.executeUpdate("INSERT INTO todos (todo_title,todo_content) VALUES (?,?)", values: [titleText, descriptionText])
+        }catch{
+            print(error.localizedDescription)
+        }
+        
+        db?.close()
+    }
+    
+    func updateTodoInfo(todo_id:Int, new_titleText:String, new_descriptionText:String){
+        db?.open()
+        do{
+            try db!.executeUpdate("UPDATE todos SET todo_title = ?, todo_content = ? WHERE todo_id = ?", values: [new_titleText, new_descriptionText, todo_id])
+        }catch{
+            print(error.localizedDescription)
+        }
+        
+        db?.close()
     }
     
     func deleteTodoInfo(id:Int){
-        print("repo:TODO Delete id: \(id)")
+        db?.open()
+        do{
+            try db!.executeUpdate("DELETE FROM todos WHERE todo_id = ?", values: [id])
+        }catch{
+            print(error.localizedDescription)
+        }
+        
+        db?.close()
     }
     
     func searchTodoInfo(searchText:String?){
-        print("repo:Search : \(searchText ?? "")")
+        
+        db?.open()
+        
+        var todoListData = [Todo]();
+        do{
+            let result = try db!.executeQuery("select * from todos where todo_title = '%\(searchText!)%'", values: nil)
+            
+            while result.next() {
+                let todo_id = Int(result.string(forColumn: "todo_id"))!
+                let todo_title = result.string(forColumn: "todo_title")!
+                let todo_desc = result.string(forColumn: "todo_content")!
+                let item = Todo(id: todo_id, title: todo_title, description: todo_desc)
+                
+                todoListData.append(item)
+            }
+            todoList.onNext(todoListData)
+            
+        }catch{
+            print(error.localizedDescription)
+        }
+        
+        db?.close()
+        
     }
     
     
     func loadTodoData(){
         
-        let todoListData = [
-        Todo(id: 0, title: "iOS Bootcamp", description: "Homework"),
-        Todo(id: 1, title: "Work", description: "Task"),
-        Todo(id: 2, title: "Home", description: "Homework"),
-        Todo(id: 3, title: "Personal", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s")
-        ]
+        db?.open()
         
-        todoList.onNext(todoListData)
+        var todoListData = [Todo]();
+        do{
+            let result = try db!.executeQuery("select * from todos", values: nil)
+            while result.next() {
+                let todo_id = Int(result.string(forColumn: "todo_id"))!
+                let todo_title = result.string(forColumn: "todo_title")!
+                let todo_desc = result.string(forColumn: "todo_content")!
+                let item = Todo(id: todo_id, title: todo_title, description: todo_desc)
+                todoListData.append(item)
+            }
+            
+            todoList.onNext(todoListData)
+            
+        }catch{
+            print(error.localizedDescription)
+        }
+        
+        db?.close()
     }
     
 }
