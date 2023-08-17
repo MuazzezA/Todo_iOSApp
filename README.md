@@ -2,15 +2,27 @@
 
 <h3>iOS todo app homework</h3>
 
-<h4>Todo için verilen : 3. ödev</h4>
+<h4>Todo için verilen : 4. ödev</h4>
 
-* MVVM yapısı projeye uygulandı, printlerde 'repo' kelimesi ile işlevin repoda olduğu gösterildi.
-
+* SQLite projeye eklendi. todos.sqlite adındaki veritabanından todos adındaki tablodan veriler çekildi.
 
 <br>
 <table>
 <td>
-  <b>YENİ ~ 3.ödev</b>
+  <b>SON ~ 4.ödev</b>
+  <br>
+  <img width="300" src="https://github.com/MuazzezA/Todo_iOSApp/assets/64336826/d484dc89-5d55-4a1b-94cf-d5989b65dd52" />
+</td>
+</table>
+
+<h4>Todo için verilen : 3. ödev</h4>
+
+* MVVM yapısı projeye uygulandı, printlerde 'repo' kelimesi ile işlevin repoda olduğu gösterildi.
+
+<br>
+<table>
+<td>
+  <b>3.ödev</b>
   <br>
   <img width="500" src="https://github.com/MuazzezA/Todo_iOSApp/assets/64336826/69bfb7ab-8bab-4d13-aa41-ca7f915bb1fc" />
 </td>
